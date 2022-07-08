@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { ProductItem } from "./ProductItem";
 
 
@@ -6,13 +7,16 @@ interface SearchResultsProps {
     id: number;
     price: number;
     title: string;
-  }>
+  }>;
+  onAddToWishlist: (id: number) => void;
 }
 
-export function SearchResults({ results }: SearchResultsProps) {
-  const totalPrice = results.reduce((total, product) => {
-    return total + product.price;
-  }, 0);
+export function SearchResults({ results, onAddToWishlist }: SearchResultsProps) {
+  const totalPrice = useMemo(() => {
+    return results.reduce((total, product) => {
+      return total + product.price;
+    }, 0)
+  }, [results]);
 
   return (
     <div>
@@ -20,7 +24,7 @@ export function SearchResults({ results }: SearchResultsProps) {
 
       {results.map(product => {
         return (
-          <ProductItem key={product.id} product={product} />
+          <ProductItem key={product.id} product={product} onAddToWishlist={onAddToWishlist} />
         );
       })}
     </div>
@@ -41,5 +45,10 @@ export function SearchResults({ results }: SearchResultsProps) {
  */
 
 /**
- * useMemo / useCallback
+ * useMemo (memoizar valor) / useCallback (memoizar função)
+ * 
+ * 1. Calculos pesados
+ * 2. Igualdade referencial (quando a gente repassa aquela informação a um component filho)
+ * 
+ * 
  */
