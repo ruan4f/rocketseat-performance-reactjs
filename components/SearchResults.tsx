@@ -1,4 +1,5 @@
-import { List, ListRowRenderer } from 'react-virtualized';
+import { List as ListVirtual, ListRowRenderer } from 'react-virtualized';
+
 import { ProductItem } from "./ProductItem";
 
 interface SearchResultsProps {
@@ -26,7 +27,7 @@ export function SearchResults({ totalPrice, results, onAddToWishlist }: SearchRe
     <div>
       <h2>{totalPrice}</h2>
 
-      <List
+      <ListVirtual
         height={300}
         rowHeight={30}
         width={900}

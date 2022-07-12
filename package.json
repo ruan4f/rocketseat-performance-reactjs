@@ -21,7 +21,6 @@
     "@next/bundle-analyzer": "^12.2.2",
     "@types/node": "^18.0.3",
     "@types/react": "^18.0.15",
-    "@types/react-virtualized": "^9.21.21",
     "cross-env": "^7.0.3",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.0",
